@@ -1,0 +1,284 @@
+body{
+    background-color: #000120 !important;
+}
+.college-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+}
+.otp-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+  .otp-input {
+    /* width: 40px ;
+    height: 40px; */
+    text-align: center;
+    font-size: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  .otp-input:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
+.rounded-circle {
+    border-radius: 50%;
+}
+.name{
+    color: white;
+}
+.navbar {
+    background-color: #1A4E8D;
+    border-radius: 30px;
+    
+}
+.logos{
+    height: 100px;
+    width:100px;
+    }
+/* .main{
+    display:flex;
+    align-items: center;
+    height: 100vh;
+} */
+.slogin-back{
+    background-image: url("img/login.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-bottom-left-radius:15px;
+    border-top-left-radius:15px;
+}
+.tlogin-back{
+    background-image: url("img/tlogin.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-bottom-left-radius:15px;
+    border-top-left-radius:15px;
+}
+.alogin-back{
+    background-image: url("img/adb.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-bottom-left-radius:15px;
+    border-top-left-radius:15px;
+}
+.signup-back{
+    background-image: url("img/s.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-bottom-right-radius:15px;
+    border-top-right-radius:15px;
+}
+.content{
+    background-color: rgba(255, 255, 255, 0.228);
+    border-bottom-right-radius:15px;
+    border-top-right-radius:15px;
+    font-family: "Poppins", sans-serif;
+    font-style: normal; 
+}
+u{
+    cursor: pointer;;
+}
+.content-signup{
+    border-bottom-left-radius:15px;
+    border-top-left-radius:15px;
+    background-color: rgba(255, 255, 255, 0.228);
+    font-family: "Poppins", sans-serif;
+    font-style: normal; 
+}
+.flip-card {
+  perspective: 1000px;
+}
+
+.flip-card-inside {
+  width:100%;
+  height: 100%;
+  transform-style: preserve-3d !important;
+  transition: transform 1s;
+}
+
+.flip-card.flipped .flip-card-inside {
+  transform: rotateY(180deg) !important;
+}
+
+.flip-card .login-card,
+.flip-card .signup-card {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  transform-origin: center;
+  backface-visibility: hidden;
+  /* transition: opacity 0.5s, transform 0.5s; */
+}
+
+.flip-card .signup-card {
+  transform: rotateY(180deg);
+}
+p{
+    font-family: "Poppins", sans-serif;
+    font-weight: 200;
+    font-style: normal; 
+}
+
+
+.input-container {
+    position: relative;
+    margin: 20px 0;
+    justify-content: center;
+}
+
+ input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    outline: none;
+    font-size: 16px;
+    height: 54px;
+    padding-top: 18px;
+    padding-left: 50px;
+    background-color: #D9D9D9;
+}
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    outline: none;
+    font-size: 16px;
+    height: 54px;
+    padding-top: 18px;
+    padding-left: 50px;
+    background-color: #D9D9D9;
+}
+input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    outline: none;
+    font-size: 16px;
+    height: 54px;
+    padding-top: 10px;
+    padding-left: 50px;
+    background-color: #D9D9D9;
+}
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    outline: none;
+    font-size: 16px;
+    height: 54px;
+    padding-top: 18px;
+    padding-left: 50px;
+    background-color: #D9D9D9;
+}
+input[type="tel"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    outline: none;
+    font-size: 16px;
+    height: 54px;
+    padding-top: 12px;
+    padding-left: 50px;
+    background-color: #D9D9D9;
+}
+
+label {
+    position: absolute;
+    top: 50%;
+    left: 50px;
+    font-size: 13px;
+    color:black;
+    pointer-events: none;
+    transform: translateY(-50%);
+    transition: 0.2s ease all;
+}
+/* Hide arrows for Chrome, Safari, Edge */
+input[type="number"] {
+    -moz-appearance: textfield; /* Firefox */
+  }
+  
+  /* Hide arrows for Chrome, Safari, Edge */
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  
+  /* Hide arrows for IE10+, Edge */
+  input[type="number"] {
+    -ms-appearance: none; /* IE10+, Edge */
+  }
+input[type="number"]:focus + label,
+input[type="number"]:valid + label {
+    top: 12px;
+    left: 50px;
+    font-size: 13px;
+}
+
+input[type="password"]:focus + label,
+input[type="password"]:valid + label {
+    top: 12px;
+    left: 50px;
+    font-size: 13px;
+} 
+input[type="text"]:focus + label,
+input[type="text"]:valid + label {
+    top: 12px;
+    left: 50px;
+    font-size: 13px;
+} 
+input[type="tel"]:focus + label,
+input[type="tel"]:valid + label {
+    top: 12px;
+    left: 50px;
+    font-size: 13px;
+} 
+input[type="email"]:focus + label,
+input[type="email"]:valid + label {
+    top: 12px;
+    left: 50px;
+    font-size: 13px;
+} 
+
+
+.custom-nav .nav-item {
+    border-radius: 50px !important;
+    margin: 5px;
+}
+
+.custom-nav .nav-link {
+    color: #fff !important;
+    background-color: #1e1e30 !important;
+    border: none;
+}
+
+.custom-nav .nav-link.active {
+    color: #000 !important;
+    background-color: #fff !important;
+    font-weight:bold;
+}
+
+.custom-nav .nav-link:not(.active) {
+    background-color: #1e1e30;
+}
+.btn {
+    font-weight: bold !important;
+    background-color: #1A4E8D !important;
+    color: white !important; 
+    width:120px !important;
+    border: 2px solid #1A4E8D !important;
+}
+.btn:hover{
+    border: 2px solid white !important;
+    transition: .7s;
+}
