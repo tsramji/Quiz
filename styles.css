@@ -282,3 +282,12 @@ input[type="email"]:valid + label {
     border: 2px solid white !important;
     transition: .7s;
 }
+form .error-msg{
+    margin:10px 0;
+    display : block;
+    background : #ff0000;
+    color : #fff;
+    border-radius : 5px;
+    font-size : 17px;
+    padding : 3px;
+}

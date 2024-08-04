@@ -12,10 +12,11 @@ if(isset($_POST['submit'])){
     $contact=($_POST['contact']);
     $pass=md5($_POST['pass']);
     $usertype=($_POST['usertype']);
-    $select = "SELECT * FROM staff_admin_details WHERE email = '$email' && password = '$pass' ";
+    $select = "SELECT * FROM staff_admin_details WHERE email = '$email' || id = '$id' ";
     $result = mysqli_query($conn, $select);
     if(mysqli_num_rows($result)>0){
-        $error[]='user already exist!';
+        $error1[]='user already exist!';
+
     }
     else{
         $insert = "INSERT INTO staff_admin_details values('$id','$name','$email','$dept','$contact','$pass','$usertype')";
@@ -99,6 +100,13 @@ if(isset($_POST['submit1'])){
                         <h2 class="pt-2">login Now</h2>
                         <p>Enter your email and password here</p>
                         <form action="" method="post" id="myForm">
+                        <?php
+                            if(isset($error)){
+                                foreach($error as $error){
+                                    echo '<span class = "error-msg">'.$error.'</span>';
+                                };
+                            };
+                        ?>
                             <div class="input-container">
                                 <img src="img/email.png" alt="" style="position: absolute;top:18px;left:12px;">
                                 <input type="email" placeholder="Email" name="email" id="email" class="form-control" required>
@@ -106,7 +114,7 @@ if(isset($_POST['submit1'])){
                             </div>
                             <div class="input-container">
                                 <img src="img/l.png" alt="" style="position: absolute;top:15px;left:15px;">
-                                <input type="password" placeholder="Password" name='pass' minlength="6" title="Please enter a 10-digit phone number" id="passw" class="form-control" required>
+                                <input type="password" placeholder="Password" name='pass' minlength="6" title="Please enter your password" id="passw" class="form-control" required>
                                 <!-- <label for="input" class="floating-label">Password</label> -->
                                 <div onclick="toggle()">
                                     <img src="img/oeye.png"  id="oeye"  alt="" style="position: absolute;top:15px;right:15px;">                            
@@ -125,32 +133,19 @@ if(isset($_POST['submit1'])){
                     </div>
                 </div>
                 <!-- Sign up card -->
+                
                 <div class="signup-card d-flex row p-3" style="border-radius:15px;font: poppins;">
                     <div class="signup-back col-6 d-none d-sm-block order-2"></div>
                     <div class="order-1 col-md-6 col-lg-6 col-sm-12 col-xs-12 justify-content-center  text-center pt-4 content-signup" style="color: white;">
                         <img src="img/teach.png" alt="" width="108px" height="108px">
                         <h2 class="pt-2"> Teachers Signup</h2>
                         <p>Enter your details and register here</p>
-
-                        <script>
-                            function validate(){
-                            var pwd=document.forms[0].password.value.length;
-                            if (pwd<6)
-                            {
-                                alert("Password should be minimum 8 Characters")
-                                event.preventDefault();
-                            }
-                            else{
-                                document.getElementById().submit();
-                            }
-                        }
-                        </script>
-                        
                         <form action="" method='post' id="myForm">
+                    
                         <?php
-                            if(isset($error)){
-                                foreach($error as $error){
-                                    echo '<span class = "error-msg">'.$error.'</span>';
+                            if(isset($error1)){
+                                foreach($error1 as $error1){
+                                    echo '<span class = "error-msg">'.$error1.'</span>';
                                 };
                             };
                         ?>
@@ -192,7 +187,7 @@ if(isset($_POST['submit1'])){
                                 <small class="eperror" style="color: red;"></small>
                             </div><br>
                             <div>
-                                <input type="submit" name="submit" class="btn p-3 mb-4" onclick="validate(event)" />
+                                <input type="submit" name="submit" class="btn p-3 mb-4" />
                             </div>
                             <div>
                                 <p>Back to <u href="" onclick="flipCard()"><b>Login </b></u></p>
