@@ -99,7 +99,7 @@ if(isset($_POST['submit1'])){
                     <div class="tlogin-back col-6 d-none d-sm-block"></div>
                     <div class="col-md-6 col-lg-6 col-sm-12 col-xs-12 justify-content-center  text-center pt-4 content" style="color: white;">
                         <img src="img/teach.png" alt="" width="108px" height="108px">
-                        <h2 class="pt-2">Teachers login</h2>
+                        <h2 class="pt-2">login Now</h2>
                         <p>Enter your email and password here</p>
                         <form action="" method="post" id="myForm">
                             <div class="input-container">
