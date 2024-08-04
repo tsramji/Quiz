@@ -1,3 +1,57 @@
+<?php
+session_start();
+@include 'config.php';
+?>
+<?php
+//signup code
+if(isset($_POST['submit'])){
+    $id=($_POST['id']);
+    $name = mysqli_real_escape_string($conn, $_POST['name']);
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $dept=($_POST['dept']);
+    $contact=($_POST['contact']);
+    $pass=md5($_POST['pass']);
+    $usertype=($_POST['usertype']);
+    $select = "SELECT * FROM staff_admin_details WHERE email = '$email' && password = '$pass' ";
+    $result = mysqli_query($conn, $select);
+    if(mysqli_num_rows($result)>0){
+        $error[]='user already exist!';
+    }
+    else{
+        $insert = "INSERT INTO staff_admin_details values('$id','$name','$email','$dept','$contact','$pass','$usertype')";
+        mysqli_query($conn, $insert);
+            header('location:tlogin.php');
+    }
+
+};
+?>
+<?php
+//login code
+if(isset($_POST['submit1'])){
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $pass=md5($_POST['pass']);
+    //$usertype=($_POST['usertype']);
+
+    $select = "SELECT * FROM staff_admin_details WHERE email = '$email' && password = '$pass' ";
+    $result = mysqli_query($conn, $select);
+    $user_type=mysqli_fetch_array($result);
+
+    if(mysqli_num_rows($result)>0){
+        if($user_type['user_type']=='admin'){
+          $_SESSION['user_name']=$email;
+          header('location:admin.php');
+    }
+    else if($user_type['user_type']=='staff'){
+          $_SESSION['user_name']=$email;
+          header('location:staff.php');
+      }
+    }
+    else{
+        $error[]='incorrect email or password!';
+    }
+
+};
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,15 +101,15 @@
                         <img src="img/teach.png" alt="" width="108px" height="108px">
                         <h2 class="pt-2">Teachers login</h2>
                         <p>Enter your email and password here</p>
-                        <form action="" id="myForm">
+                        <form action="" method="post" id="myForm">
                             <div class="input-container">
                                 <img src="img/email.png" alt="" style="position: absolute;top:18px;left:12px;">
-                                <input type="email" placeholder="Email" name="numberInput" id="email" class="form-control" required>
+                                <input type="email" placeholder="Email" name="email" id="email" class="form-control" required>
                                 <!-- <label for="input" class="floating-label">Email</label> -->
                             </div>
                             <div class="input-container">
                                 <img src="img/l.png" alt="" style="position: absolute;top:15px;left:15px;">
-                                <input type="password" placeholder="Password" minlength="6" title="Please enter a 10-digit phone number" id="passw" class="form-control" required>
+                                <input type="password" placeholder="Password" name='pass' minlength="6" title="Please enter a 10-digit phone number" id="passw" class="form-control" required>
                                 <!-- <label for="input" class="floating-label">Password</label> -->
                                 <div onclick="toggle()">
                                     <img src="img/oeye.png"  id="oeye"  alt="" style="position: absolute;top:15px;right:15px;">                            
@@ -65,7 +119,7 @@
                                 <small class="eperror" style="color: red;"></small>
                             </div><br>
                             <div>
-                                <input type="submit"  class="btn p-3 mb-4" value="Login" />
+                                <input type="submit" name='submit1' class="btn p-3 mb-4" value="Login" />
                             </div>
                             <div>
                                 <p>Create an Account? <u href="" onclick="flipCard()"><b>Sign up</b></u></p>
@@ -79,36 +133,69 @@
                     <div class="order-1 col-md-6 col-lg-6 col-sm-12 col-xs-12 justify-content-center  text-center pt-4 content-signup" style="color: white;">
                         <img src="img/teach.png" alt="" width="108px" height="108px">
                         <h2 class="pt-2"> Teachers Signup</h2>
-                        <p>Enter your details and regsiter here</p>
-                        <form action="" id="myForm">
+                        <p>Enter your details and register here</p>
+
+                        <script>
+                            function validate(){
+                            var pwd=document.forms[0].password.value.length;
+                            if (pwd<6)
+                            {
+                                alert("Password should be minimum 8 Characters")
+                                event.preventDefault();
+                            }
+                            else{
+                                document.getElementById().submit();
+                            }
+                        }
+                        </script>
+                        
+                        <form action="" method='post' id="myForm">
+                        <?php
+                            if(isset($error)){
+                                foreach($error as $error){
+                                    echo '<span class = "error-msg">'.$error.'</span>';
+                                };
+                            };
+                        ?>
                             <div class="input-container">
                                 <img src="img/u.png" alt="" style="position: absolute;top:15px;left:12px;">
-                                <input type="text" placeholder="User name"  pattern="^[a-zA-Z0-9_]{3,15}$" title="Username must be 3-15 characters long and can only contain letters, numbers, and underscores."  id="uname" class="form-control" required>
+                                <input type="text" placeholder="Staff ID" name="id" title="Please enter your id"  id="uname" class="form-control" required>
+                            </div>
+                            <div class="input-container">
+                                <img src="img/u.png" alt="" style="position: absolute;top:15px;left:12px;">
+                                <input type="text" placeholder="Name" name="name" title="Please enter your name"  id="uname" class="form-control" required>
+                                <!--<input type="text" placeholder="Name" pattern="^[a-zA-Z0-9_]{3,15}$" title="Username must be 3-15 characters long and can only contain letters, numbers, and underscores."  id="uname" class="form-control" required>
+                                 <label for="input" class="floating-label">Email</label> -->
+                            </div>
+                            <div class="input-container">
+                                <img src="img/email.png" alt="" style="position: absolute;top:18px;left:12px;">
+                                <input type="email" placeholder="Email" title="Please enter your mail-id" name="email" id="email" class="form-control" required>
                                 <!-- <label for="input" class="floating-label">Email</label> -->
                             </div>
                             <div class="input-container">
                                 <img src="img/email.png" alt="" style="position: absolute;top:18px;left:12px;">
-                                <input type="email" placeholder="Email" name="numberInput" id="email" class="form-control" required>
+                                <input type="text" placeholder="Department" title="Please enter your department" name="dept" id="email" class="form-control" required>
                                 <!-- <label for="input" class="floating-label">Email</label> -->
                             </div>
                             <div class="input-container">
                                 <img src="img/pn.png" alt="" style="position: absolute;top:15px;left:10px;">
-                                <input type="tel" placeholder="Phone number" id="pno" class="form-control" required  pattern="\d{10}" title="Please enter a 10-digit phone number" autocomplete="off">
+                                <input type="tel" placeholder="Phone number" name='contact' id="pno" class="form-control" required  pattern="\d{10}" title="Please enter a 10-digit phone number" autocomplete="off">
                                 <!-- <label for="input">Phone number</label> -->
                             </div>
                             <div class="input-container">
                                 <img src="img/l.png" alt="" style="position: absolute;top:15px;left:15px;">
-                                <input type="password" placeholder="Password" minlength="6" title="Please enter a 10-digit phone number" id="pas" class="form-control" required>
+                                <input type="password" placeholder="Password" minlength="6" title="Please enter a 10-digit phone number" id="pas" name="pass" class="form-control" required>
                                 <!-- <label for="input" class="floating-label">Password</label> -->
                                 <div onclick="togglep()">
                                     <img src="img/oeye.png"  id="opeye"  alt="" style="position: absolute;top:15px;right:15px;">                            
                                 </div>
                             </div>
+                            <input type="hidden" name = "usertype" placeholder="usertype" value='staff'>
                             <div class="text-left">
                                 <small class="eperror" style="color: red;"></small>
                             </div><br>
                             <div>
-                                <input type="submit" class="btn p-3 mb-4" />
+                                <input type="submit" name="submit" class="btn p-3 mb-4" onclick="validate()" />
                             </div>
                             <div>
                                 <p>Back to <u href="" onclick="flipCard()"><b>Login </b></u></p>
@@ -120,11 +207,10 @@
         </div>
     </div>
     <script>
-          function flipCard() {
-    var card = document.getElementById("myCard");
-    card.classList.toggle("flipped");
-  }
-
+        function flipCard() {
+            var card = document.getElementById("myCard");
+            card.classList.toggle("flipped");
+        }
     </script>
     <script src="login.js"></script>
 </body>
