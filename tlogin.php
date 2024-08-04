@@ -30,12 +30,9 @@ if(isset($_POST['submit'])){
 if(isset($_POST['submit1'])){
     $email = mysqli_real_escape_string($conn, $_POST['email']);
     $pass=md5($_POST['pass']);
-    //$usertype=($_POST['usertype']);
-
     $select = "SELECT * FROM staff_admin_details WHERE email = '$email' && password = '$pass' ";
     $result = mysqli_query($conn, $select);
     $user_type=mysqli_fetch_array($result);
-
     if(mysqli_num_rows($result)>0){
         if($user_type['user_type']=='admin'){
           $_SESSION['user_name']=$email;
@@ -86,7 +83,7 @@ if(isset($_POST['submit1'])){
         <div class="row">
             <div class="col-md-12">
                 <nav class="nav nav-pills nav-fill custom-nav">
-                    <a class="nav-item nav-link " href="index.html">Students login</a>
+                    <a class="nav-item nav-link " href="index.php">Students login</a>
                     <a class="nav-item nav-link active" href="tauth.html">Teachers login</a>
                     <a class="nav-item nav-link" href="adauth.html">Admin login</a>
                 </nav>
@@ -195,7 +192,7 @@ if(isset($_POST['submit1'])){
                                 <small class="eperror" style="color: red;"></small>
                             </div><br>
                             <div>
-                                <input type="submit" name="submit" class="btn p-3 mb-4" onclick="validate()" />
+                                <input type="submit" name="submit" class="btn p-3 mb-4" onclick="validate(event)" />
                             </div>
                             <div>
                                 <p>Back to <u href="" onclick="flipCard()"><b>Login </b></u></p>

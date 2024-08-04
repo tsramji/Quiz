@@ -1,3 +1,28 @@
+<?php
+session_start();
+@include 'config.php';
+?>
+<?php
+//login code
+if(isset($_POST['submit'])){
+    $rno = mysqli_real_escape_string($conn, $_POST['rno']);
+    $pass=md5($_POST['pass']);
+
+    $select = "SELECT * FROM students_details WHERE rollno = '$rno' && password = '$pass' ";
+    $result = mysqli_query($conn, $select);
+    $user_type=mysqli_fetch_array($result);
+
+    if(mysqli_num_rows($result)>0){
+          $_SESSION['user_name']=$rno;
+          header('location:admin.php');
+    }
+    else{
+        $error[]='incorrect email or password!';
+    }
+
+};
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,10 +72,10 @@
                 <img src="img/stu.png" alt="" width="108px" height="108px">
                 <h2 class="pt-2">Student login</h2>
                 <p>Enter your roll no and password here</p>
-                <form action="" id="myForm">
+                <form action="user.php" method="post" id="myForm">
                     <div class="input-container">
                         <img src="img/u.png" alt="" style="position: absolute;top:15px;left:10px;">
-                        <input type="number" name="numberInput" id="rno" maxlength="6" class="form-control" required>
+                        <input type="number" name="rno" id="rno" maxlength="6" class="form-control" required>
                         <label for="input" class="floating-label">Roll no</label>
                     </div>
                     <div  class="text-left">
@@ -58,7 +83,7 @@
                     </div>
                     <div class="input-container">
                         <img src="img/l.png" alt="" style="position: absolute;top:15px;left:15px;">
-                        <input type="password"  name="numberInput" id="pass" class="form-control" required>
+                        <input type="password"  name="pass" id="pass" class="form-control" required>
                         <label for="input" class="floating-label">Password</label>
                         <div onclick="togglePasswordVisibility()">
                             <img src="img/oeye.png"  id="eye"  alt="" style="position: absolute;top:15px;right:15px;">                            
@@ -68,7 +93,7 @@
                         <small class="perror" style="color: red;"></small>
                     </div><br>
                     <div>
-                        <input type="submit" onclick ="validate(event)" class="btn p-3 mb-4" value="Login" />
+                        <input type="submit" name="submit" onclick ="validate(event)" class="btn p-3 mb-4" value="Login" />
                     </div>
                 </form>
             </div>
