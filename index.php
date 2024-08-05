@@ -6,23 +6,20 @@ session_start();
 //login code
 if(isset($_POST['submit'])){
     $rno = mysqli_real_escape_string($conn, $_POST['rno']);
-    $pass=md5($_POST['pass']);
-
+    $pass=($_POST['pass']);
     $select = "SELECT * FROM students_details WHERE rollno = '$rno' && password = '$pass' ";
     $result = mysqli_query($conn, $select);
     $user_type=mysqli_fetch_array($result);
-
     if(mysqli_num_rows($result)>0){
-          $_SESSION['user_name']=$rno;
-          header('location:admin.php');
+        $_SESSION['user_name']=$rno;
+        header('location:user.php');
     }
     else{
-        $error[]='incorrect email or password!';
+        $error[]='incorrect roll_no or password!';
     }
 
 };
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -72,7 +69,14 @@ if(isset($_POST['submit'])){
                 <img src="img/stu.png" alt="" width="108px" height="108px">
                 <h2 class="pt-2">Student login</h2>
                 <p>Enter your roll no and password here</p>
-                <form action="user.php" method="post" id="myForm">
+                <form action="" method="post" id="myForm">
+                    <?php
+                        if(isset($error)){
+                            foreach($error as $error){
+                                echo '<span class = "error-msg">'.$error.'</span>';
+                            };
+                        };
+                    ?>
                     <div class="input-container">
                         <img src="img/u.png" alt="" style="position: absolute;top:15px;left:10px;">
                         <input type="number" name="rno" id="rno" maxlength="6" class="form-control" required>

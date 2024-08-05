@@ -46,6 +46,7 @@ if(isset($_POST['submit1'])){
     }
     else{
         $error[]='incorrect email or password!';
+        echo "<script>event.preventDefault()</script>";
     }
 
 };
@@ -146,6 +147,8 @@ if(isset($_POST['submit1'])){
                             if(isset($error1)){
                                 foreach($error1 as $error1){
                                     echo '<span class = "error-msg">'.$error1.'</span>';
+                                    echo "<script type='text/javascript'>alert('$error1');</script>";?>
+                                <?php
                                 };
                             };
                         ?>
