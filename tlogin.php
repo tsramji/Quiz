@@ -122,6 +122,7 @@ if(isset($_POST['submit1'])){
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <div class="container">
@@ -207,8 +208,9 @@ if(isset($_POST['submit1'])){
                             };
                         ?>
                             <div class="input-container">
-                                <img src="img/u.png" alt="" style="position: absolute;top:15px;left:12px;">
-                                <input type="text" placeholder="Staff ID" name="id" title="Please enter your id"  id="uname" class="form-control" required>
+                                <!--<img src="img/u.png" alt="" style="position: absolute;top:15px;left:12px;">-->
+                                <i class="fa fa-id-card" style="font-size:24px; color:black; position: absolute;top:15px;left:12px;"></i>
+                                <input type="text" placeholder="Staff ID" name="id" title="Please enter your id"  id="id" class="form-control" required>
                             </div>
                             <div class="input-container">
                                 <img src="img/u.png" alt="" style="position: absolute;top:15px;left:12px;">
@@ -222,8 +224,8 @@ if(isset($_POST['submit1'])){
                                 <!-- <label for="input" class="floating-label">Email</label> -->
                             </div>
                             <div class="input-container">
-                                <img src="img/email.png" alt="" style="position: absolute;top:18px;left:12px;">
-
+                                <!--<img src="img/email.png" alt="" style="position: absolute;top:18px;left:12px;">-->
+                                <i class="fa fa-graduation-cap" style="font-size:24px; color:black; position: absolute;top:15px;left:12px;" aria-hidden="true"></i>
                                 <select id="dept" name="dept" placeholder="Department" title="Please enter your department" class="form-control" required>
                                     <option value="" disabled selected>Select a department</option>
                                     <option value="EEE">EEE</option>
