@@ -169,6 +169,17 @@ input[type="email"] {
     padding-left: 50px;
     background-color: #D9D9D9;
 }
+#dept {                             /*select input*/
+    width: 100%;    
+    padding: 10px;
+    border-radius: 5px;
+    outline: none;
+    font-size: 16px;
+    height: 54px;
+    padding-top: 10px;
+    padding-left: 50px;
+    background-color: #D9D9D9;
+}
 input[type="text"] {
     width: 100%;
     padding: 10px;

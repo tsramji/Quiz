@@ -25,6 +25,60 @@ if(isset($_POST['submit'])){
     }
 
 };
+
+
+// Database configuration
+$host = 'localhost';
+$dbname = 'quiz';
+$username = 'root';
+$password = '';
+$dsn = "mysql:host=$host;dbname=$dbname";
+
+// Create a new PDO instance
+try {
+    $pdo = new PDO($dsn, $username, $password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("Database connection failed: " . $e->getMessage());
+}
+
+// Fetch distinct departments
+$query = "SELECT DISTINCT dept FROM staff_admin_details";
+$stmt = $pdo->query($query);
+$dept = $stmt->fetchAll(PDO::FETCH_COLUMN);
+
+// Iterate over each department and create a table
+foreach ($dept as $dept) {
+    // Sanitize department name to be used in table names
+    $table_name = preg_replace('/[^a-zA-Z0-9_]/', '_', strtolower($dept));
+
+    // Create a new table for the department
+    $create_table_query = "CREATE TABLE IF NOT EXISTS `$table_name` (
+        id INT PRIMARY KEY,
+        name VARCHAR(100),
+        email VARCHAR(50),
+        dept VARCHAR(100),
+        contact VARCHAR(10),
+        password VARCHAR(50),
+        user_type VARCHAR(10)
+    )";
+    $pdo->exec($create_table_query);
+
+    // Insert data into the department-specific table
+    $insert_data_query = "INSERT IGNORE INTO `$table_name` (id, name, email,dept,contact,password,user_type)
+SELECT * FROM staff_admin_details
+WHERE dept = :dept
+";
+    $stmt = $pdo->prepare($insert_data_query);
+    $stmt->execute(['dept' => $dept]);
+    
+    //echo "Table `$table_name` created and data inserted.<br>";
+}
+
+//echo "All department tables have been created and populated.";
+
+
+
 ?>
 <?php
 //login code
@@ -169,8 +223,27 @@ if(isset($_POST['submit1'])){
                             </div>
                             <div class="input-container">
                                 <img src="img/email.png" alt="" style="position: absolute;top:18px;left:12px;">
-                                <input type="text" placeholder="Department" title="Please enter your department" name="dept" id="email" class="form-control" required>
-                                <!-- <label for="input" class="floating-label">Email</label> -->
+
+                                <select id="dept" name="dept" placeholder="Department" title="Please enter your department" class="form-control" required>
+                                    <option value="" disabled selected>Select a department</option>
+                                    <option value="EEE">EEE</option>
+                                    <option value="ECE">ECE</option>
+                                    <option value="CSE">CSE</option>
+                                    <option value="MECH">Mech</option>
+                                    <option value="IT">IT</option>
+                                    <option value="AI_DS">AI & DS</option>
+                                    <option value="CYBER_SECURITY">Cyber Security</option>
+                                    <option value="IOT">IOT</option>
+                                    <option value="MCA">MCA</option>
+                                    <option value="MBA">MBA</option> 
+                                    <option value="ME_CSE">M.E CSE</option>    
+                                    <option value="ME_CS">M.E Communication Systems</option>
+                                    <option value="ME_PSE">M.E PSE</option>   
+                                </select>
+
+
+                                <!--<input type="text" placeholder="Department" title="Please enter your department" name="dept" id="dept" class="form-control" required>
+                                 <label for="input" class="floating-label">Email</label> -->
                             </div>
                             <div class="input-container">
                                 <img src="img/pn.png" alt="" style="position: absolute;top:15px;left:10px;">
