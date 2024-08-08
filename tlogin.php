@@ -293,6 +293,6 @@ if(isset($_POST['submit1'])){
             card.classList.toggle("flipped");
         }
     </script>
-    <script src="login.js"></script>
+    <script src="JS/login.js"></script>
 </body>
 </html>

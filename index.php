@@ -12,7 +12,7 @@ if(isset($_POST['submit'])){
     $user_type=mysqli_fetch_array($result);
     if(mysqli_num_rows($result)>0){
         $_SESSION['user_name']=$rno;
-        header('location:user.php');
+        header('location:student.php');
     }
     else{
         $error[]='incorrect roll_no or password!';

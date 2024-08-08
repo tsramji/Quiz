@@ -1,3 +1,6 @@
+<?php
+@include 'session.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,10 +37,10 @@
     </div>
    <div>
         <span class="closebtn" onclick="closeNav()">×</span>
-        <a class="active" href="student.html"><img src="img/ma.png" alt="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Test</a>
-        <a href="results.html"><img src="img/res.png" alt="">&nbsp;&nbsp;&nbsp;&nbsp;Results</a>
-        <a href="profile.html"><img src="img/dp.png" id="openModal" alt="">&nbsp;&nbsp;&nbsp;&nbsp;Profile</a>
-        <a href="index.html"><img style="position: relative;right:8px;" src="img/lo.png" alt="">&nbsp;&nbsp;Logout</a>
+        <a class="active" href="student.php"><img src="img/ma.png" alt="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Test</a>
+        <a href="results.php"><img src="img/res.png" alt="">&nbsp;&nbsp;&nbsp;&nbsp;Results</a>
+        <a href="profile.php"><img src="img/dp.png" id="openModal" alt="">&nbsp;&nbsp;&nbsp;&nbsp;Profile</a>
+        <a href="logout.php"><img style="position: relative;right:8px;" src="img/lo.png" alt="">&nbsp;&nbsp;Logout</a>
    </div> 
 </div>
 <div class="mt-2 p-3 test-card m-2" onclick="navigate()">

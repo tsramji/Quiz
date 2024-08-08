@@ -17,3 +17,42 @@ function navigate(){
   });
 });
 
+
+
+function togglePasswordVisibility() {
+  var passwordInput = document.getElementById("pass");
+  var eyeIcon = document.getElementById("eye");
+  var eye = document.getElementById("oeye");
+
+  if (passwordInput.type === "password") {
+      passwordInput.type = "text";
+      eyeIcon.src = "img/ceye.png";
+  } else {
+      passwordInput.type = "password";
+      eyeIcon.src = "img/oeye.png";
+  }
+}
+function toggle() {
+  var passwordInput = document.getElementById("opass");;
+  var eye = document.getElementById("oeye");
+
+  if (passwordInput.type === "password") {
+      passwordInput.type = "text";
+      eye.src = "img/ceye.png";
+  } else {
+      passwordInput.type = "password";
+      eye.src = "img/oeye.png";
+  }
+}
+function togglep() {
+var passwordInput = document.getElementById("npass");;
+var opeye = document.getElementById("opeye");
+
+if (passwordInput.type === "password") {
+    passwordInput.type = "text";
+    opeye.src = "img/ceye.png";
+} else {
+    passwordInput.type = "password";
+    opeye.src = "img/oeye.png";
+}
+}
