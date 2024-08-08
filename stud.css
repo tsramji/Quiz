@@ -32,11 +32,11 @@ body{
     text-decoration: none !important;
     font-size: 14px;
     font-weight: 400;
-    color: #000000;
+    color: #ffffff;
     display: block;
     transition: 0.3s;
-    margin: 5px;
     cursor: pointer;
+    margin: 5px;
   }
  a{
     text-decoration: none !important;
@@ -111,6 +111,10 @@ h5{
     width: 300px;
     border-radius: 5px;
   }
+  table thead tr th{
+    padding: 0px 30px !important;
+    color: white !important;
+  }
   .btn {
     font-weight: bold !important;
     background-color: #1A4E8D !important;
@@ -151,65 +155,15 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 th, td {
-  padding: 8px 12px;
+  /* padding: 18px 12px; */
   text-align: left;
-  white-space: nowrap; /* Prevent text wrapping */
+  white-space: nowrap; 
   border:none !important;
 }
+/* table.dataTable > thead > tr > th, table.dataTable > thead > tr > td {
+  padding: 4px 10px !important;
 
-      
- /* Customize the search bar */
- .dataTables_filter {
-  margin-bottom: 20px;
-}
-.dataTables_filter input {
-  width: 300px;
-  padding: 10px;
-  /* border: 2px solid #007BFF; */
-  background-color: #D9D9D9 !important;
-  color: rgb(32, 31, 31) !important;
-  border-radius: 4px;
-}
-.dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_filter, .dataTables_wrapper .dataTables_info, .dataTables_wrapper .dataTables_processing, .dataTables_wrapper .dataTables_paginate{
-  color:white !important;
-}
-/* Customize the "Show entries" dropdown */
-.dataTables_length {
-  margin-bottom: 20px;
-}
-.dataTables_length select {
-  padding: 10px;
-  /* border: 2px solid #28A745; */
-  border-radius: 4px;
-}
-a{
-  color: white !important;
-  padding-left: 10px;
-  padding-right: 5px ;
-  position: relative;
-  bottom: 10px;
-}
-/* Customize the pagination buttons */
-.dataTables_paginate {
-  margin-top: 20px;
-  color: white;
-}
-
-.paginate_button.previous {
- color: white !important;
-}
-.paginate_button.next {
-  background-color: #D4EDDA !important;
-}
-.dataTables_length select {
-  color: white !important;  /* Text color of the dropdown */
-}
-
-/* Style the options in the dropdown */
-.dataTables_length select option {
-  color: white !important;
-  background-color: #1A4E8D;
-}
+} */
 table.dataTable tbody td {
   background-color: #000120 !important; /* Ensure each cell background matches */
   color: #ffffff !important; /* Ensure text color is readable */
@@ -225,9 +179,22 @@ table.dataTable tbody td {
   border: 2px solid white !important;
   transition: .7s;
 }
+label{
+  color:white !important;
+}
+select{
+  color: white !important;
+}
+option{
+  background-color: #1A4E8D !important;
+  color: white !important;
+}
 .profile{
   display: flex;
   align-items: center;
   height: 90vh;
   justify-content: center;
+}
+div.dt-container .dt-length, div.dt-container .dt-search, div.dt-container .dt-info, div.dt-container .dt-processing, div.dt-container .dt-paging {
+  color: white !important;
 }
