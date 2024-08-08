@@ -1,0 +1,200 @@
+
+body{
+    background-color: #000120 !important;
+}/* MAIN PAGE */
+.sidebar {
+    height: 100%;
+    width: 250px; /* Initially set to show on large and mid screens */
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.51) !important;
+    backdrop-filter: blur(5px);
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 30px;
+  }
+
+  /* The sidebar links */
+  .sidebar a {
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 400;
+    color: rgb(0, 0, 0) !important;
+    display: block;
+    transition: 0.3s;
+    margin: 10px;
+  }
+  span{
+    padding: 10px 15px;
+    text-decoration: none !important;
+    font-size: 14px;
+    font-weight: 400;
+    color: #ffffff;
+    display: block;
+    transition: 0.3s;
+    cursor: pointer;
+    margin: 5px;
+  }
+ a{
+    text-decoration: none !important;
+ }
+  /* When you mouse over the navigation links, change their color */
+  .sidebar a:hover {
+    color: #438fec7a;
+  }
+h5{
+  font-family: "Poppins", sans-serif !important;
+    font-style: normal !important; 
+}
+  /* Position and style the close button (top right corner) */
+  .sidebar .closebtn {
+    position: absolute;
+    top: -20px;
+    right: -10px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+
+  /* Style the button that is used to open the sidebar on small screens */
+  .openbtn {
+    display: none; /* Initially hide on large and mid screens */
+    background:transparent !important;
+    cursor: pointer;
+    background-color:rgba(255, 255, 255, 0.228) !important;
+    padding: 10px 15px;
+    border: none;
+  }
+  .openbtn:focus{
+      outline: none;
+  }
+  
+    .sidebar {
+      width: 0; /* Hide on small screens */
+    }
+    .openbtn {
+      display: block; /* Show on small screens */
+      font-size: 20px;
+      background:transparent !important;
+      cursor: pointer;
+      border: none;
+    }
+  
+  .active{
+      padding: 10px;
+      background-color: #438fec;
+      margin: 10px;
+      color: #000000 !important;
+      border-radius: 30px;
+      font-weight:700 !important;
+  }
+  .navbar{
+    background-color: rgba(255, 255, 255, 0.516) !important;
+    backdrop-filter: blur(5px);
+      color: white;
+  }
+  .test-card{
+    background-color: #438fec7a;
+    color: white;
+    font-family: "Poppins", sans-serif !important;
+    font-style: normal !important; 
+    border-radius: 5px;  
+    /* height: 100px; */
+  }
+  .question{
+    color: white;
+  }
+  .opt{
+    background-color: rgba(255, 255, 255, 0.164) !important;
+    width: 300px;
+    border-radius: 5px;
+  }
+  table thead tr th{
+    padding: 0px 30px !important;
+    color: white !important;
+  }
+  .btn {
+    font-weight: bold !important;
+    background-color: #1A4E8D !important;
+    color: white !important; 
+    width:120px !important;
+    border: 2px solid #1A4E8D !important;
+}
+.btn:hover{
+  border: 2px solid white !important;
+  transition: .7s;
+}
+input[type=text]{
+  height: 50px;
+  font-size: 15px;
+  color: #ffffff !important;
+  background-color: #484545;
+}
+input[type=number]{
+  height: 50px;
+  font-size: 15px;
+  color: #f9f8f8 !important;
+  background-color: #484545;
+}
+input[type=number]:focus,input[type=text]:focus{
+  background-color: #484545;
+}
+/* Hide up and down arrows in number inputs */
+input[type="number"] {
+  -moz-appearance: textfield; /* Firefox */
+  appearance: textfield; /* Standard */
+}
+
+/* Hide arrows in Webkit-based browsers (Chrome, Safari) */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+th, td {
+  /* padding: 18px 12px; */
+  text-align: left;
+  white-space: nowrap; 
+  border:none !important;
+}
+/* table.dataTable > thead > tr > th, table.dataTable > thead > tr > td {
+  padding: 4px 10px !important;
+
+} */
+table.dataTable tbody td {
+  background-color: #000120 !important; /* Ensure each cell background matches */
+  color: #ffffff !important; /* Ensure text color is readable */
+}
+.btn {
+  font-weight: bold !important;
+  background-color: #1A4E8D !important;
+  color: white !important; 
+  width:120px !important;
+  border: 2px solid #1A4E8D !important;
+}
+.btn:hover{
+  border: 2px solid white !important;
+  transition: .7s;
+}
+label{
+  color:white !important;
+}
+select{
+  color: white !important;
+}
+option{
+  background-color: #1A4E8D !important;
+  color: white !important;
+}
+.profile{
+  display: flex;
+  align-items: center;
+  height: 90vh;
+  justify-content: center;
+}
+div.dt-container .dt-length, div.dt-container .dt-search, div.dt-container .dt-info, div.dt-container .dt-processing, div.dt-container .dt-paging {
+  color: white !important;
+}

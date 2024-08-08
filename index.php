@@ -69,6 +69,7 @@ if(isset($_POST['submit'])){
                 <img src="img/stu.png" alt="" width="108px" height="108px">
                 <h2 class="pt-2">Student login</h2>
                 <p>Enter your roll no and password here</p>
+
                 <form action="" method="post" id="myForm">
                     <?php
                         if(isset($error)){
@@ -77,6 +78,8 @@ if(isset($_POST['submit'])){
                             };
                         };
                     ?>
+
+                <form action="student.html" id="myForm">
                     <div class="input-container">
                         <img src="img/u.png" alt="" style="position: absolute;top:15px;left:10px;">
                         <input type="number" name="rno" id="rno" maxlength="6" class="form-control" required>
@@ -103,6 +106,6 @@ if(isset($_POST['submit'])){
             </div>
         </div>
     </div>
-    <script src="login.js"></script>
+    <script src="JS/login.js"></script>
 </body>
 </html>
