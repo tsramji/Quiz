@@ -1,3 +1,6 @@
+<?php
+@include 'session.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,10 +40,10 @@
     </div>
    <div>
         <span class="closebtn" onclick="closeNav()">×</span>
-        <a  href="student.html"><img src="img/ta.png" alt="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Test</a>
-        <a class="active" href="results.html"><img src="img/ra.png" alt="">&nbsp;&nbsp;&nbsp;&nbsp;Results</a>
-        <a href="profile.html"><img src="img/dp.png" alt="">&nbsp;&nbsp;&nbsp;&nbsp;Profile</a>
-        <a href="index.html"><img style="position: relative;right:8px;" src="img/lo.png" alt="">&nbsp;&nbsp;Logout</a>
+        <a  href="student.php"><img src="img/ta.png" alt="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Test</a>
+        <a class="active" href="results.php"><img src="img/ra.png" alt="">&nbsp;&nbsp;&nbsp;&nbsp;Results</a>
+        <a href="profile.php"><img src="img/dp.png" alt="">&nbsp;&nbsp;&nbsp;&nbsp;Profile</a>
+        <a href="logout.php"><img style="position: relative;right:8px;" src="img/lo.png" alt="">&nbsp;&nbsp;Logout</a>
    </div> 
 </div>
 <div class="container-fluid" >

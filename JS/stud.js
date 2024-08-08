@@ -16,4 +16,3 @@ function navigate(){
       "responsive": true // Make table responsive
   });
 });
-

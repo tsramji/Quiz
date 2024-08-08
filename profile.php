@@ -1,3 +1,29 @@
+<?php
+@include 'session.php';
+$user = $_SESSION['user_name'];
+$sql = "SELECT * FROM students_details WHERE rollno = $user";
+$result = $conn->query($sql);
+$row = mysqli_fetch_assoc($result);
+?>
+<?php
+if(isset($_POST['submit'])){
+  $user = $_SESSION['user_name'];
+  $opass=($_POST['opass']);
+  $npass=($_POST['npass']);
+  $select = "SELECT * FROM students_details WHERE rollno = '$user' && password = '$opass' ";
+  $result = mysqli_query($conn, $select);
+  if(mysqli_num_rows($result)>0){
+    $select = " UPDATE students_details SET password = '$npass' WHERE rollno = $user ";
+    $result = mysqli_query($conn, $select);
+    $success[]= "Password was changed Successfully!!!";
+  }
+  else{
+      $error[]='Incorrect Password!';
+      echo "<script>event.preventDefault()</script>";
+  }
+
+};
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,24 +60,49 @@
     </div>
    <div>
         <span class="closebtn" onclick="closeNav()">×</span>
-        <a  href="student.html"><img src="img/ta.png" alt="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Test</a>
-        <a class="" href="results.html"><img src="img/res.png" alt="">&nbsp;&nbsp;&nbsp;&nbsp;Results</a>
-        <a href="profile.html" class="active"><img src="img/pa.png" alt="">&nbsp;&nbsp;&nbsp;&nbsp;Profile</a>
-        <a href="index.html" ><img style="position: relative;right:8px;" src="img/lo.png" alt="">&nbsp;&nbsp;Logout</a>
+        <a  href="student.php"><img src="img/ta.png" alt="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Test</a>
+        <a class="" href="results.php"><img src="img/res.png" alt="">&nbsp;&nbsp;&nbsp;&nbsp;Results</a>
+        <a href="profile.php" class="active"><img src="img/pa.png" alt="">&nbsp;&nbsp;&nbsp;&nbsp;Profile</a>
+        <a href="logout.php" ><img style="position: relative;right:8px;" src="img/lo.png" alt="">&nbsp;&nbsp;Logout</a>
    </div> 
 </div>
 <div class="profile p-3">
 <div style="background-color: rgba(255, 255, 255, 0.163);border-radius: 10px;color: white;" class="p-3">
-  <h5>Here you can change the Password</h5><br>
-  <form action="">
+  <h5>Here you can change the Password</h5>
+  <form action="" method="POST">
+  <?php
+    if(isset($error)){
+      foreach($error as $error){
+        echo '<span class = "error-msg"><center>'.$error.'</center></span>';
+        //echo "<script type='text/javascript'>alert('$error');</script>";?>
+        <?php
+        };
+    };
+  ?>
+  <?php
+    if(isset($success)){
+      foreach($success as $success){
+        echo '<span class = "success-msg"><center>'.$success.'</center></span>';
+      };
+    };
+  ?>
     <label for="">Roll no</label>
-    <input type="number" class="form-control" name="" id="" value="238114" required><br>
+    <input type="number" class="form-control" name="" id="" value="<?php echo $row['rollno'] ?>" readonly required><br>
+    <label for="">Name</label>
+    <input type="text" class="form-control" name="" id="" value="<?php echo $row['name'] ?>" readonly required><br>
+    <label for="">Department</label>
+    <input type="text" class="form-control" name="" id="" value="<?php echo $row['dept'] ?>" readonly required><br>
+    <label for="">Mail Id</label>
+    <input type="text" class="form-control" name="" id="" value="<?php echo $row['email'] ?>" readonly required><br>
+
     <label for="">Old Password</label>
-    <input type="text" class="form-control" minlength="6" title="Please enter a password above 6 digit" name="" id="" required><br>
+    <input type="password" class="form-control" minlength="6" title="Please enter a password above 6 digit" name="opass" id="" required><br>
+
     <label for="">New Password</label>
-    <input type="text" class="form-control" minlength="6" title="Please enter a password above 6 digit name=" id="" required><br>
+    <input type="password" class="form-control" minlength="6" title="Please enter a password above 6 digit" name="npass" id="" required><br>
+
     <div class="text-center">
-      <input type="submit" onclick ="validate(event)" class="btn p-3 mb-4" value="Submit" />
+      <input type="submit" name="submit" onclick ="validate(event)" class="btn p-3 mb-4" value="Submit" />
     </div>
   </form>
 </div>
