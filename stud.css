@@ -222,3 +222,12 @@ form .success-msg{
   font-size : 17px;
   padding : 3px;
 }
+
+
+
+
+.input-container {
+  position: relative;
+  margin: 10px 0px;
+  justify-content: center;
+}

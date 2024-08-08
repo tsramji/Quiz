@@ -95,11 +95,24 @@ if(isset($_POST['submit'])){
     <label for="">Mail Id</label>
     <input type="text" class="form-control" name="" id="" value="<?php echo $row['email'] ?>" readonly required><br>
 
+    
+    <div class="input-container">
     <label for="">Old Password</label>
-    <input type="password" class="form-control" minlength="6" title="Please enter a password above 6 digit" name="opass" id="" required><br>
+      <input type="password" name='opass' minlength="6" title="Please enter a password above 6 digits" id="opass" class="form-control" required>
+      <!-- <label for="input" class="floating-label">Password</label> -->
+      <div onclick="toggle()">
+        <img src="img/oeye.png"  id="oeye"  alt="" style="position: absolute;color:white;top:45px;right:15px;">                            
+      </div>
+    </div>
 
+    <div class="input-container">
     <label for="">New Password</label>
-    <input type="password" class="form-control" minlength="6" title="Please enter a password above 6 digit" name="npass" id="" required><br>
+      <input type="password" name='npass' minlength="6" title="Please enter a password above 6 digits" id="npass" class="form-control" required>
+      <!-- <label for="input" class="floating-label">Password</label> -->
+      <div onclick="togglep()">
+        <img src="img/oeye.png"  id="opeye"  alt="" style="position: absolute;color:white;top:45px;right:15px;">                            
+      </div>
+    </div>
 
     <div class="text-center">
       <input type="submit" name="submit" onclick ="validate(event)" class="btn p-3 mb-4" value="Submit" />
