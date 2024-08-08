@@ -20,51 +20,56 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg ">
-  <!-- heading -->
-  <div class="d-flex w-100  flex-row justify-content-between align-items-center">
-    <div><a class="navbar-brand" href="#"></a></div>
-    <div><h5 class="mt-2">Upcoming test</h5></div>
-    <div><button class="openbtn" onclick="openNav()"><img src="img/menu.png" height="35px" width="35px" alt=""></button></div>
-  </div>
-</nav>
-
 <!-- Sidebar -->
-<div id="mySidebar" class="sidebar">
-    <div style="margin-left: 70px;">
-        <img src="img/stu.png" alt="">
-        <p style="color: rgb(0, 0, 0);font-size: 16px;font-weight: 600;" class="ml-2 mt-3">Student name</p>
+<div id="mySidebar" class="sidebar text-center">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+    <div>
+      <img src="img/stu.png" alt="">
+      <p style="color: rgb(0, 0, 0);font-size: 16px;font-weight: 600;" class="ml-2 mt-3">Student name</p>
     </div>
-   <div>
-        <span class="closebtn" onclick="closeNav()">×</span>
-        <a class="active" href="student.php"><img src="img/ma.png" alt="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Test</a>
-        <a href="results.php"><img src="img/res.png" alt="">&nbsp;&nbsp;&nbsp;&nbsp;Results</a>
-        <a href="profile.php"><img src="img/dp.png" id="openModal" alt="">&nbsp;&nbsp;&nbsp;&nbsp;Profile</a>
-        <a href="logout.php"><img style="position: relative;right:8px;" src="img/lo.png" alt="">&nbsp;&nbsp;Logout</a>
-   </div> 
+    <a href="student.php" style="color:white !important;" class="active"><img style="position: relative;right:16px;" src="img/ta.png" alt="">&nbsp;Test</a>
+    <a href="results.php"><img style="position: relative;right:-5px;"  src="img/res.png" alt="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Results</a>
+    <a href="profile.php"><img style="position: relative;right:3px;" src="img/pa.png" alt="">&nbsp;&nbsp;&nbsp;&nbsp;Profile</a>
+    <a href="logout.php"><img style="position: relative;right:3px;" src="img/lo.png" alt="">&nbsp;&nbsp;&nbsp;&nbsp;Logout</a>
 </div>
-<div class="mt-2 p-3 test-card m-2" onclick="navigate()">
+
+<!-- Topbar -->
+<div class="topbar d-flex flex-row justify-content-between align-items-center">
+    <div class="">
+        <a href=""></a>
+    </div>
+    <div class="mt-2 ml-4">
+        <h5 class="">Upcoming test</h5>
+    </div>
+    <div class="">
+        <button class="openbtn" id="menuBtn" onclick="openNav()">
+            <img src="img/menu.png" height="35px" width="35px" alt="">
+        </button>
+    </div>
+</div>
+<section class="content">
+<div class="mt-2 p-2 test-card m-1" onclick="navigate()">
     <div class="row m-2 justify-content-between align-items-center">
         <h4 class="d-flex justify-content-center">General quiz</h4>
         <p class="justify-content-end">Date : 15-05-2024&nbsp;&nbsp;Time : 10:00 Am to 11:00 AM &nbsp;&nbsp;</p>
     </div>
     <p class="align-items-center text-right mr-4"><img src="img/time.png" height="20px" width="20px" alt="">&nbsp;1 hour duration</p>
 </div>
-<div class="mt-2 p-3 test-card m-2">
+<div class="mt-2 p-3 test-card m-1">
     <div class="row m-2 justify-content-between align-items-center">
         <h4 class="d-flex justify-content-center">General quiz</h4>
         <p class="justify-content-end">Date : 15-05-2024&nbsp;&nbsp;Time : 10:00 Am to 11:00 AM &nbsp;&nbsp;</p>
     </div>
     <p class="align-items-center text-right mr-4"><img src="img/time.png" height="20px" width="20px" alt="">&nbsp;1 hour duration</p>
 </div>
-<div class="mt-2 p-3 test-card m-2">
+<div class="mt-2 p-3 test-card m-1">
     <div class="row m-2 justify-content-between align-items-center">
         <h4 class="d-flex justify-content-center">General quiz</h4>
         <p class="justify-content-end">Date : 15-05-2024&nbsp;&nbsp;Time : 10:00 Am to 11:00 AM &nbsp;&nbsp;</p>
     </div>
     <p class="align-items-center text-right mr-4"><img src="img/time.png" height="20px" width="20px" alt="">&nbsp;1 hour duration</p>
 </div>
-<!-- <button id="openModal">Open Modal</button> -->
+</section>
 <script src="JS/stud.js"></script>
 </body>
 
