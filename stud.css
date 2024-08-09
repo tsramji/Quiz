@@ -223,11 +223,14 @@ form .success-msg{
   padding : 3px;
 }
 
-
-
-
 .input-container {
   position: relative;
-  margin: 10px 0px;
+  margin-bottom: 10px;
+  justify-content: center;
+}
+
+.new_pass {
+  position: relative;
+  margin-top: 20px;
   justify-content: center;
 }

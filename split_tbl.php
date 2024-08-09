@@ -1,13 +1,73 @@
 <?php
+@include 'config.php';
 // Database configuration
-$host = 'localhost';
-$dbname = 'quiz';
-$username = 'root';
-$password = '';
-$dsn = "mysql:host=$host;dbname=$dbname";
+//$host = 'localhost';
+//$dbname = 'quiz';
+//$username = 'root';
+//$password = '';
+
+
+if ($conn->connect_error) {
+    die("Database connection failed: " . $conn->connect_error);
+}
+
+// Fetch distinct departments
+$query = "SELECT DISTINCT dept FROM students_details";
+$result = $conn->query($query);
+
+if (!$result) {
+    die("Query failed: " . $conn->error);
+}
+
+$departments = [];
+$year = [];
+while ($row = $result->fetch_assoc()) {
+    $departments[] = $row['dept'];
+    $year[] = $row['year'];
+}
+
+// Iterate over each department and create a table
+foreach ($departments as $department) {
+    // Sanitize department name to be used in table names
+    $table_name = preg_replace('/[^a-zA-Z0-9_]/', '_', strtolower($department_$year));
+
+    // Create a new table for the department
+    $create_table_query = "CREATE TABLE IF NOT EXISTS $table_name (
+        rollno INT PRIMARY KEY,
+        name VARCHAR(50),
+        dept VARCHAR(50),
+        year VARCHAR(10),
+        email VARCHAR(50),
+        password VARCHAR(50),
+        batch VARCHAR(10)
+    )";
+    if (!$conn->query($create_table_query)) {
+        die("Table creation failed: " . $conn->error);
+    }
+
+    // Insert data into the department-specific table
+    $insert_data_query = "INSERT IGNORE INTO $table_name (rollno, name, dept, year, email, password, batch)
+SELECT rollno, name, dept, year, email, password, batch FROM students_details
+WHERE dept = ? and year = ?";
+
+    $stmt = $conn->prepare($insert_data_query);
+    if (!$stmt) {
+        die("Prepare failed: " . $conn->error);
+    }
+
+    $stmt->bind_param('s', $department);
+    if (!$stmt->execute()) {
+        die("Execute failed: " . $stmt->error);
+    }
+
+    // Uncomment if you want to see the output
+    // echo "Table $table_name created and data inserted.<br>";
+}
+
+
 
 // Create a new PDO instance
-try {
+/*try {
     $pdo = new PDO($dsn, $username, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
@@ -48,4 +108,5 @@ WHERE dept = :dept
 }
 
 echo "All department tables have been created and populated.";
+*/
 ?>

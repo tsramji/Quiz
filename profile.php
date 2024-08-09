@@ -105,7 +105,7 @@ if(isset($_POST['submit'])){
       </div>
     </div>
 
-    <div class="input-container">
+    <div class="input-container new_pass">
     <label for="">New Password</label>
       <input type="password" name='npass' minlength="6" title="Please enter a password above 6 digits" id="npass" class="form-control" required>
       <!-- <label for="input" class="floating-label">Password</label> -->
