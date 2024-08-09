@@ -18,35 +18,37 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-
-
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg m-1">
-  <!-- heading -->
-  <div class="d-flex w-100  flex-row justify-content-between align-items-center">
-    <div><a class="navbar-brand" href="#"></a></div>
-    <div><h5 class="mt-2">Your Result</h5></div>
-    <div><button class="openbtn" onclick="openNav()"><img src="img/menu.png" height="35px" width="35px" alt=""></button></div>
-  </div>
-</nav>
-
 <!-- Sidebar -->
-<div id="mySidebar" class="sidebar">
-    <div style="margin-left: 70px;">
-        <img src="img/stu.png" alt="">
-        <p style="color: rgb(0, 0, 0);font-size: 16px;font-weight: 600;" class="ml-2 mt-3">Student name</p>
+<div id="mySidebar" class="sidebar text-center">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+    <div>
+      <img src="img/stu.png" alt="">
+      <p style="color: rgb(0, 0, 0);font-size: 16px;font-weight: 600;" class="ml-2 mt-3">Student name</p>
     </div>
-   <div>
-        <span class="closebtn" onclick="closeNav()">×</span>
-        <a  href="student.php"><img src="img/ta.png" alt="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Test</a>
-        <a class="active" href="results.php"><img src="img/ra.png" alt="">&nbsp;&nbsp;&nbsp;&nbsp;Results</a>
-        <a href="profile.php"><img src="img/dp.png" alt="">&nbsp;&nbsp;&nbsp;&nbsp;Profile</a>
-        <a href="logout.php"><img style="position: relative;right:8px;" src="img/lo.png" alt="">&nbsp;&nbsp;Logout</a>
-   </div> 
+    <a href="student.php"><img style="position: relative;right:16px;" src="img/ma.png" alt="">&nbsp;Test</a>
+    <a href="results.php" style="color:white !important;"   class="active"><img style="position: relative;right:-12px;"  src="img/ra.png" alt="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Results</a>
+    <a href="profile.php"><img src="img/pa.png" alt="">&nbsp;&nbsp;&nbsp;&nbsp;Profile</a>
+    <a href="logout.php"><img style="position: relative;right:3px;" src="img/lo.png" alt="">&nbsp;&nbsp;&nbsp;&nbsp;Logout</a>
 </div>
-<div class="container-fluid" >
+
+<!-- Topbar -->
+<div class="topbar d-flex flex-row justify-content-between align-items-center">
+    <div class="">
+        <a href=""></a>
+    </div>
+    <div class="mt-2 ml-4">
+        <h5 class="">Your results</h5>
+    </div>
+    <div class="">
+        <button class="openbtn" id="menuBtn" onclick="openNav()">
+            <img src="img/menu.png" height="35px" width="35px" alt="">
+        </button>
+    </div>
+</div>
+<section class="content">
+    <div class="" >
     <table class="table table-responsive-lg table-responsive-md text-white" id="myTable">
         <thead style="padding:0px 1px; color:white; background-color:#438FEC;border: none;">
             <tr style="padding:0px 1px;">
@@ -189,6 +191,7 @@
         </tbody>
     </table>
 </div> 
+</section>
 <script>
     $(document).ready( function () {
       $('#myTable').DataTable();

@@ -43,31 +43,36 @@ if(isset($_POST['submit'])){
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 <body style="overflow-y: hidden;">
-    <nav class="navbar navbar-expand-lg m-1">
-  <!-- heading -->
-  <div class="d-flex w-100  flex-row justify-content-between align-items-center">
-    <div><a class="navbar-brand" href="#"></a></div>
-    <div><h5 class="mt-2">Profile</h5></div>
-    <div><button class="openbtn" onclick="openNav()"><img src="img/menu.png" height="35px" width="35px" alt=""></button></div>
-  </div>
-</nav>
-
 <!-- Sidebar -->
-<div id="mySidebar" class="sidebar">
-    <div style="margin-left: 70px;">
-        <img src="img/stu.png" alt="">
-        <p style="color: rgb(0, 0, 0);font-size: 16px;font-weight: 600;" class="ml-2 mt-3">Student name</p>
+<div id="mySidebar" class="sidebar text-center">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+    <div>
+      <img src="img/stu.png" alt="">
+      <p style="color: rgb(0, 0, 0);font-size: 16px;font-weight: 600;" class="ml-2 mt-3">Student name</p>
     </div>
-   <div>
-        <span class="closebtn" onclick="closeNav()">×</span>
-        <a  href="student.php"><img src="img/ta.png" alt="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Test</a>
-        <a class="" href="results.php"><img src="img/res.png" alt="">&nbsp;&nbsp;&nbsp;&nbsp;Results</a>
-        <a href="profile.php" class="active"><img src="img/pa.png" alt="">&nbsp;&nbsp;&nbsp;&nbsp;Profile</a>
-        <a href="logout.php" ><img style="position: relative;right:8px;" src="img/lo.png" alt="">&nbsp;&nbsp;Logout</a>
-   </div> 
+    <a href="student.php"><img style="position: relative;right:16px;" src="img/ma.png" alt="">&nbsp;Test</a>
+    <a href="results.php"><img style="position: relative;right:-12px;"  src="img/res.png" alt="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Results</a>
+    <a href="profile.php" style="color:white !important;" class="active"><img style="position: relative;right:-3px;" src="img/p.png" alt="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Profile</a>
+    <a href="logout.php"><img style="position: relative;right:3px;" src="img/lo.png" alt="">&nbsp;&nbsp;&nbsp;&nbsp;Logout</a>
 </div>
-<div class="profile p-3">
-<div style="background-color: rgba(255, 255, 255, 0.163);border-radius: 10px;color: white;" class="p-3">
+
+<!-- Topbar -->
+<div class="topbar d-flex flex-row justify-content-between align-items-center">
+    <div class="">
+        <a href=""></a>
+    </div>
+    <div class="mt-2 ml-4">
+        <h5 class="">Profile</h5>
+    </div>
+    <div class="">
+        <button class="openbtn" id="menuBtn" onclick="openNav()">
+            <img src="img/menu.png" height="35px" width="35px" alt="">
+        </button>
+    </div>
+</div>
+<section class="p-3">
+<div class="profile p-1">
+<div style="background-color: rgba(255, 255, 255, 0.163);border-radius: 10px;color: white;height:600px;overflow-y:scroll;" class="p-3 scroll">
   <h5>Here you can change the Password</h5>
   <form action="" method="POST">
   <?php
@@ -86,40 +91,38 @@ if(isset($_POST['submit'])){
       };
     };
   ?>
-    <label for="">Roll no</label>
+    <label for class="mt-3">Roll no</label>
     <input type="number" class="form-control" name="" id="" value="<?php echo $row['rollno'] ?>" readonly required><br>
     <label for="">Name</label>
     <input type="text" class="form-control" name="" id="" value="<?php echo $row['name'] ?>" readonly required><br>
     <label for="">Department</label>
     <input type="text" class="form-control" name="" id="" value="<?php echo $row['dept'] ?>" readonly required><br>
     <label for="">Mail Id</label>
-    <input type="text" class="form-control" name="" id="" value="<?php echo $row['email'] ?>" readonly required><br>
-
-    
-    <div class="input-container">
+    <input type="text" class="form-control" name="" id="" value="<?php echo $row['email'] ?>" readonly required>
+    <div class="input-container pt-3">
     <label for="">Old Password</label>
       <input type="password" name='opass' minlength="6" title="Please enter a password above 6 digits" id="opass" class="form-control" required>
       <!-- <label for="input" class="floating-label">Password</label> -->
       <div onclick="toggle()">
-        <img src="img/oeye.png"  id="oeye"  alt="" style="position: absolute;color:white;top:45px;right:15px;">                            
+        <img src="img/oeye.png"  id="oeye"  alt="" style="position: absolute;color:white;top:60px;right:15px;">                            
       </div>
     </div>
 
-    <div class="input-container new_pass">
+    <div class="input-container pt-3">
     <label for="">New Password</label>
       <input type="password" name='npass' minlength="6" title="Please enter a password above 6 digits" id="npass" class="form-control" required>
       <!-- <label for="input" class="floating-label">Password</label> -->
       <div onclick="togglep()">
-        <img src="img/oeye.png"  id="opeye"  alt="" style="position: absolute;color:white;top:45px;right:15px;">                            
+        <img src="img/oeye.png"  id="opeye"  alt="" style="position: absolute;color:white;top:60px;right:15px;">                            
       </div>
     </div>
-
-    <div class="text-center">
-      <input type="submit" name="submit" onclick ="validate(event)" class="btn p-3 mb-4" value="Submit" />
+    <div class="text-center mt-4">
+      <input type="submit" name="submit" onclick ="validate(event)" class="btn p-3 mb-2" value="Submit" />
     </div>
   </form>
 </div>
 </div>
+</section>
 <script src="JS/stud.js"></script>
 </body>
 
