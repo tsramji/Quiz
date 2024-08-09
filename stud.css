@@ -1,46 +1,105 @@
 
 body{
     background-color: #000120 !important;
-}/* MAIN PAGE */
+}
+/* Sidebar styles */
 .sidebar {
-    height: 100%;
-    width: 250px; /* Initially set to show on large and mid screens */
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: rgba(255, 255, 255, 0.51) !important;
-    backdrop-filter: blur(5px);
-    overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 30px;
-  }
+  height: 100%;
+  width: 250px; /* Default width for large screens */
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.51) !important;
+   backdrop-filter: blur(5px);
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 20px;
+}
 
-  /* The sidebar links */
+.active{
+    padding: 10px;
+    background-color: #438fec;
+    margin-right: 10px;
+    margin-left: 10px;
+    color: #ffffff !important;
+    border-radius: 30px;
+    font-weight:700 !important;
+}
+.sidebar a {
+  padding: 10px 15px;
+  text-decoration: none !important;
+  line-height: 2em;
+  font-size: 20px;
+  font-weight: 400;
+  color: rgb(0, 0, 0) !important;
+  display: block;
+  font-family: "Poppins", sans-serif !important;
+  font-style: normal !important; 
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  color: #f1f1f1 !important;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  font-size: 36px;
+}
+.openbtn{
+background:transparent !important;
+cursor: pointer;
+border: none;
+ 
+}
+
+/* Hide the close button for large screens */
+@media screen and (min-width: 992px) {
+  .sidebar .closebtn {
+      display: none;
+  }
   .sidebar a {
-    padding: 10px 15px;
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 400;
-    color: rgb(0, 0, 0) !important;
-    display: block;
-    transition: 0.3s;
-    margin: 10px;
+    padding: 10px 15px !important; /* Slightly smaller padding for medium screens */
+}
+}
+/* Padding adjustments for small screens */
+@media screen and (max-width: 768px) {
+    .sidebar a {
+        padding: 8px 10px !important; /* Even smaller padding for small screens */
+    }
+}
+
+/* Topbar styles */
+.topbar {
+  background-color: rgba(255, 255, 255, 0.51) !important;
+  padding: 15px;
+  text-align: right;
+  color: white;
+}
+
+/* Content styles */
+.content {
+  margin-left: 250px; /* Same as the sidebar width */
+  transition: margin-left .5s;
+  padding: 16px;
+}
+
+/* Adjust layout for medium and small screens */
+@media screen and (max-width: 991px) {
+  .sidebar {
+      width: 0;
   }
-  span{
-    padding: 10px 15px;
-    text-decoration: none !important;
-    font-size: 14px;
-    font-weight: 400;
-    color: #ffffff;
-    display: block;
-    transition: 0.3s;
-    cursor: pointer;
-    margin: 5px;
+  .topbar {
+  padding: 10px;
+  
+}
+  .content{
+      margin-left: 0;
   }
- a{
-    text-decoration: none !important;
- }
+}
   /* When you mouse over the navigation links, change their color */
   .sidebar a:hover {
     color: #438fec7a;
@@ -49,52 +108,7 @@ h5{
   font-family: "Poppins", sans-serif !important;
     font-style: normal !important; 
 }
-  /* Position and style the close button (top right corner) */
-  .sidebar .closebtn {
-    position: absolute;
-    top: -20px;
-    right: -10px;
-    font-size: 36px;
-    margin-left: 50px;
-  }
 
-  /* Style the button that is used to open the sidebar on small screens */
-  .openbtn {
-    display: none; /* Initially hide on large and mid screens */
-    background:transparent !important;
-    cursor: pointer;
-    background-color:rgba(255, 255, 255, 0.228) !important;
-    padding: 10px 15px;
-    border: none;
-  }
-  .openbtn:focus{
-      outline: none;
-  }
-  
-    .sidebar {
-      width: 0; /* Hide on small screens */
-    }
-    .openbtn {
-      display: block; /* Show on small screens */
-      font-size: 20px;
-      background:transparent !important;
-      cursor: pointer;
-      border: none;
-    }
-  
-  .active{
-      padding: 10px;
-      background-color: #438fec;
-      margin: 10px;
-      color: #000000 !important;
-      border-radius: 30px;
-      font-weight:700 !important;
-  }
-  .navbar{
-    background-color: rgba(255, 255, 255, 0.516) !important;
-    backdrop-filter: blur(5px);
-      color: white;
-  }
   .test-card{
     background-color: #438fec7a;
     color: white;
@@ -187,6 +201,8 @@ table.dataTable tbody td {
 }
 label{
   color:white !important;
+  margin-right: 10px !important;
+  padding-left: 10px !important;
 }
 select{
   color: white !important;
@@ -198,7 +214,6 @@ option{
 .profile{
   display: flex;
   align-items: center;
-  height: 90vh;
   justify-content: center;
 }
 div.dt-container .dt-length, div.dt-container .dt-search, div.dt-container .dt-info, div.dt-container .dt-processing, div.dt-container .dt-paging {
@@ -224,10 +239,13 @@ form .success-msg{
 }
 
 
-
-
 .input-container {
   position: relative;
   margin: 10px 0px;
   justify-content: center;
+}
+
+.scroll {
+  scrollbar-width:none; /* Makes the scrollbar thinner */
+  scrollbar-color: #888 #f1f1f1; /* Thumb color and track color */
 }
