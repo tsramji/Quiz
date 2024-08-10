@@ -1,5 +1,6 @@
 <?php
 @include 'session.php';
+// @include 'config.php';
 $user = $_SESSION['user_name'];
 $sql = "SELECT * FROM students_details WHERE rollno = $user";
 $result = $conn->query($sql);
@@ -42,9 +43,9 @@ if(isset($_POST['submit'])){
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
-<body style="overflow-y: hidden;">
+<body>
 <!-- Sidebar -->
-<div id="mySidebar" class="sidebar text-center">
+<div id="mySidebar" class="sidebar text-center" >
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
     <div>
       <img src="img/stu.png" alt="">
@@ -55,9 +56,8 @@ if(isset($_POST['submit'])){
     <a href="profile.php" style="color:white !important;" class="active"><img style="position: relative;right:-3px;" src="img/p.png" alt="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Profile</a>
     <a href="logout.php"><img style="position: relative;right:3px;" src="img/lo.png" alt="">&nbsp;&nbsp;&nbsp;&nbsp;Logout</a>
 </div>
-
 <!-- Topbar -->
-<div class="topbar d-flex flex-row justify-content-between align-items-center">
+<div class="topbar d-flex flex-row justify-content-between align-items-center" style=" position: fixed;top: 0;width:100%;">
     <div class="">
         <a href=""></a>
     </div>
@@ -72,8 +72,8 @@ if(isset($_POST['submit'])){
 </div>
 <section class="p-3">
 <div class="profile p-1">
-<div style="background-color: rgba(255, 255, 255, 0.163);border-radius: 10px;color: white;height:600px;overflow-y:scroll;" class="p-3 scroll">
-  <h5>Here you can change the Password</h5>
+ <div style="background-color: rgba(255, 255, 255, 0.163);border-radius: 10px;color: white;width:500px;" class="p-3 scroll"> 
+  <center><h5>Here you can change the Password</h5></center>
   <form action="" method="POST">
   <?php
     if(isset($error)){
