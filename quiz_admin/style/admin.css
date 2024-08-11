@@ -1,0 +1,666 @@
+/* sidebar CSS */
+.sidebar {
+    height: 100%;
+    width: 250px;
+    /* Default width for large screens */
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.51) !important;
+    backdrop-filter: blur(5px);
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 20px;
+}
+
+.active {
+    padding: 10px;
+    background-color: #438fec;
+    margin: 10px;
+    color: #000000 !important;
+    border-radius: 30px;
+    font-weight: 700 !important;
+}
+
+.sidebar a {
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 400;
+    color: rgb(0, 0, 0) !important;
+    display: block;
+    transition: 0.3s;
+}
+
+
+.sidebar .closebtn {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    font-size: 36px;
+}
+
+.openbtn {
+    background: transparent !important;
+    cursor: pointer;
+    border: none !important;
+
+}
+
+/* Hide the close button for large screens */
+@media screen and (min-width: 992px) {
+    .sidebar .closebtn {
+        display: none;
+    }
+}
+
+/* Topbar styles */
+.topbar {
+    background-color: rgba(255, 255, 255, 0.51) !important;
+    /* padding: 20px 0px !important; */
+    text-align: right;
+    color: white;
+}
+
+/* Content styles */
+.content {
+    margin-left: 250px;
+    /* Same as the sidebar width */
+    transition: margin-left .5s;
+    padding: 16px;
+}
+
+/* Adjust layout for medium and small screens */
+@media screen and (max-width: 991px) {
+    .sidebar {
+        width: 0;
+    }
+
+    .topbar {
+        padding: 10px;
+
+    }
+
+    .content {
+        margin-left: 0;
+    }
+}
+
+/* other CSS */
+.card {
+    width: 180;
+    height: 95%;
+    background-color: #31313E;
+    border-radius: 20px;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    padding-bottom: 427px;
+}
+
+/* .sidebar {
+    background-color: black;
+    width: 100%;
+
+} */
+
+ul {
+    list-style: none;
+    padding: 10px;
+
+}
+
+body {
+    background-color: rgba(255, 255, 255, 0.51);
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+    align-items: center;
+
+}
+
+li .logo {
+    margin: 0 auto;
+    height: 150px;
+    background-color: aliceblue;
+    border: 40px;
+    border-radius: 90px;
+    display: flex;
+
+
+}
+
+/* #sidealign {
+    color: white;
+    font-size: 18px;
+    margin: 0 auto;
+    background-color: #0b0b0c;
+    border-radius: 30px;
+} */
+
+li .admin-name {
+    margin: 0 auto;
+    text-align: center;
+    font-size: 0px;
+    color: white;
+
+}
+
+.admin-name {
+    color: white;
+}
+
+ul li {
+    padding: 20px;
+
+}
+
+.card a {
+    display: flex;
+    margin: 0 auto;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+}
+
+.card a:hover {
+
+    background-color: #212E49;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+
+ul li a {
+    margin-left: 15px;
+    color: white;
+}
+
+.staff-details {
+    color: white;
+    background-color: #31313E;
+    margin-top: 30px;
+    text-align: center;
+    border-radius: 5px;
+    margin-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+}
+
+form {
+    display: flex;
+}
+
+form .form-group {
+    color: white;
+    /* width: 100%; */
+
+
+}
+
+.add-staff-form input[type=text],
+.add-staff-form input[type=tel],
+.add-staff-form input[type=password],
+.add-staff-form input[type=email] {
+    margin-bottom: 10px;
+    border-radius: 50px;
+    /* width: 85%; */
+    height: 35px;
+}
+
+.add-staff-form select {
+    margin-bottom: 10px;
+    border-radius: 50px;
+    /* width: 85%; */
+    height: 35px;
+    text-align: center;
+}
+
+.add-staff-form input[type=submit] {
+    margin-bottom: 10px;
+    border-radius: 50px;
+    width: 85%;
+    height: 35px;
+}
+
+.add-staff-form input[type=text]:hover {
+    border-color: cornflowerblue;
+    border-width: medium;
+}
+
+.add-staff-form {
+    background-color: #1A1A28;
+    border-radius: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    padding-bottom: 15px;
+
+    margin-right: 15px;
+}
+
+.add-button {
+    margin-top: 28px;
+    margin-left: 4px;
+    height: 40px;
+    width: 60%;
+    border-radius: 8px;
+    background-color: #1A4ED8;
+    color: white;
+    font-weight: 500;
+    align-content: center;
+}
+
+.add-button:hover {
+    border-color: white;
+}
+
+.staff-tables {
+    color: white;
+    background-color: #31313E;
+    margin-top: 5px;
+    text-align: center;
+    border-radius: 5px;
+    margin-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+}
+
+.search-container input[type="search"] {
+
+
+    width: 200px;
+    font-size: 18px;
+    padding: 8px 10px;
+    padding-left: 25px;
+    border-radius: 25px;
+    border: none;
+    box-shadow: 2px 5px rgba(0, 0, 0, 0.2);
+
+}
+
+.search-container i {
+    transform: translateX(-300%);
+    top: 50%;
+    left: 200px;
+    color: #555;
+    cursor: pointer;
+
+}
+
+.search-container .import-button {
+    float: right;
+    height: 40px;
+    width: 15%;
+    margin-right: 110px;
+    border-radius: 8px;
+    background-color: #1A4ED8;
+    color: white;
+    font-weight: 500;
+    align-content: center;
+
+}
+
+.import-button:hover {
+    border-color: white;
+}
+
+.rows-per-page {
+    color: white;
+    background-color: #30609A;
+    margin-top: 5px;
+    padding-left: 15px;
+    border-radius: 5px;
+    margin-right: 15px;
+
+}
+
+.pagination-controls {
+    float: right;
+    transform: translaeX(-50%);
+    margin-right: 10px;
+
+}
+
+.pagination-controls button {
+    border-radius: 5px;
+    margin-top: 3px;
+}
+
+#rows {
+    margin-top: 5px;
+    border-radius: 5px;
+}
+
+.table-content {
+    border-radius: 10px;
+    background-color: #31313E;
+    color: white;
+    margin-top: 10px;
+    margin-right: 15px;
+
+    padding-top: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+
+}
+
+td #delete {
+    margin-left: 15px;
+    color: white;
+}
+
+td #delete:hover {
+    color: red;
+}
+
+td #update {
+    margin-left: 40px;
+    color: white;
+}
+
+td #update:hover {
+    color: #30609A;
+}
+
+thead .change {
+    background-color: yellow;
+}
+
+table {
+    color: white !important;
+}
+
+/* .sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+} */
+
+/* .sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+} */
+
+/* @media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+} */
+li .logo {
+    margin: 0 auto;
+    height: 150px;
+    background-color: aliceblue;
+    border: 40px;
+    border-radius: 90px;
+    display: flex;
+
+
+}
+
+.card a {
+    display: flex;
+    margin: 0 auto;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+}
+
+
+
+/* .sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+  }
+   */
+/* .sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+   */
+/* .sidenav a:hover {
+    color: #f1f1f1;
+  }
+  
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  } */
+
+/* @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  } */
+li .logo {
+    margin: 0 auto;
+    height: 150px;
+    background-color: aliceblue;
+    border: 40px;
+    border-radius: 90px;
+    display: flex;
+
+
+}
+
+.card a {
+    display: flex;
+    margin: 0 auto;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+}
+
+
+/* .content{
+    margin-right: 193px;
+  }  */
+
+body {
+    background-color: #000120 !important;
+}
+
+/* Sidebar styles */
+/* .sidebars {
+    height: 100%;
+    position: fixed;
+    z-index: index -3;;
+    top: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.51) !important;
+     backdrop-filter: blur(5px);
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 20px;
+} */
+
+/* .active{
+      padding: 10px;
+      background-color: #438fec;
+      margin: 10px;
+      color: #000000 !important;
+      border-radius: 30px;
+      font-weight:700 !important;
+  } */
+/* .sidebars a {
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 400;
+    color: white;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidebars a:hover {
+    color: #f1f1f1;
+} */
+
+/* .sidebars .closebtn {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    font-size: 36px;
+}
+.openbtn{
+  background:transparent !important;
+  cursor: pointer;
+  border: none;
+   
+} */
+
+/* Hide the close button for large screens */
+/* @media screen and (min-width: 992px) {
+    .sidebar .closebtn {
+        display: none;
+    }
+} */
+
+
+/* .topbar {
+  background-color: rgba(255, 255, 255, 0.51) !important;
+    padding: 10px;
+    text-align: right;
+    color: white;
+}
+Content styles
+.content {
+    margin-left: 250px; 
+    transition: margin-left .5s;
+    padding: 16px;
+}
+option{
+    color:black;
+}
+
+
+@media screen and (max-width: 991px) {
+    .sidebar {
+        width: 0;
+    }
+    .topbar {
+    padding: 10px;
+    
+}
+    .content{
+        margin-left: 0;
+    }
+}
+#mySidebar{
+    position:fixed;
+    z-index: 1;
+    width:0px;    
+} */
+.dataTables_wrapper .dataTables_filter input {
+    border-radius: 30px !important;
+
+}
+
+.dataTables_wrapper .dataTables_filter input:hover {
+    border-color: white;
+}
+option{
+    color:black;
+}
+
+/* .page-item.disabled .page-link {
+    font-size: 9px;
+    color: rgb(255, 255, 255);
+    background-color: black !important;
+} */  /*For White Previous and Next Button*/
+ 
+.page-item.disabled .page-link {
+    font-size: 10px;
+    color: rgb(0, 0, 0);
+}
+  
+.form-label {
+    font-weight: bold;
+}
+
+.profile-card {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    width: 100%;
+    max-width: 400px;
+    max-height:500px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+.card-title{
+    color:black;
+
+}
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(170, 170, 170, 0.5);
+   
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="password"], textarea {
+background-color : #ffffff; 
+
+}
+.form-label {
+    font-weight: bold;
+}
+button{
+    position: absolute;
+    padding: 100% 16px;
+    padding-bottom:100px; 
+    background-color: none;
+    
+}

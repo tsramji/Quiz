@@ -1,13 +1,8 @@
 <?php
-@include 'config.php';
-// Database configuration
-//$host = 'localhost';
-//$dbname = 'quiz';
-//$username = 'root';
-//$password = '';
 
 
-if ($conn->connect_error) {
+
+/*if ($conn->connect_error) {
     die("Database connection failed: " . $conn->connect_error);
 }
 
@@ -67,7 +62,7 @@ WHERE dept = ? and year = ?";
 
 
 // Create a new PDO instance
-/*try {
+try {
     $pdo = new PDO($dsn, $username, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {

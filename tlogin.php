@@ -102,7 +102,7 @@ if(isset($_POST['submit1'])){
     if(mysqli_num_rows($result)>0){
         if($user_type['user_type']=='admin'){
           $_SESSION['user_name']=$email;
-          header('location:admin.php');
+          header('location:quiz_admin/admin.php');
     }
     else if($user_type['user_type']=='staff'){
           $_SESSION['user_name']=$email;

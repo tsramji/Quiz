@@ -1,3 +1,3 @@
 <?php
-$conn = mysqli_connect('localhost','root','','quiz');
+$conn = mysqli_connect('localhost','root','','quizz');
 ?>
