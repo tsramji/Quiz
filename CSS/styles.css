@@ -50,28 +50,28 @@ body{
     height: 100vh;
 } */
 .slogin-back{
-    background-image: url("img/login.jpeg");
+    background-image: url("../img/login.jpeg");
     background-size: cover;
     background-repeat: no-repeat;
     border-bottom-left-radius:15px;
     border-top-left-radius:15px;
 }
 .tlogin-back{
-    background-image: url("img/tlogin.jpeg");
+    background-image: url("../img/tlogin.jpeg");
     background-size: cover;
     background-repeat: no-repeat;
     border-bottom-left-radius:15px;
     border-top-left-radius:15px;
 }
 .alogin-back{
-    background-image: url("img/adb.jpeg");
+    background-image: url("../img/adb.jpeg");
     background-size: cover;
     background-repeat: no-repeat;
     border-bottom-left-radius:15px;
     border-top-left-radius:15px;
 }
 .signup-back{
-    background-image: url("img/s.jpeg");
+    background-image: url("../img/s.jpeg");
     background-size: cover;
     background-repeat: no-repeat;
     border-bottom-right-radius:15px;
