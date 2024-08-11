@@ -1,13 +1,14 @@
 
 body{
     background-color: #000120 !important;
+    /* overflow-y: scroll; */
 }
 /* Sidebar styles */
 .sidebar {
   height: 100%;
   width: 250px; /* Default width for large screens */
   position: fixed;
-  z-index: 1;
+  z-index: 1100; /* Higher than topbar and profile */
   top: 0;
   left: 0;
   background-color: rgba(255, 255, 255, 0.51) !important;
@@ -78,6 +79,7 @@ border: none;
   padding: 15px;
   text-align: right;
   color: white;
+  z-index: 1000; /* Set a high z-index */
 }
 
 /* Content styles */
@@ -215,6 +217,10 @@ option{
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  top:5em; 
+  z-index: 1; /* Ensure it has a lower z-index */
+  /* overflow-y: scroll; */
 }
 div.dt-container .dt-length, div.dt-container .dt-search, div.dt-container .dt-info, div.dt-container .dt-processing, div.dt-container .dt-paging {
   color: white !important;
