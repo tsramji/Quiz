@@ -66,7 +66,23 @@ $UserType = $resultData['user_type'];
 			</tr>
 			<tr> 
 				<td>Department</td>
-				<td><input type="text"class="form-control" name="Department" value="<?php echo $Department; ?>"></td>
+				<td><select id="dept" name="Department" class="form-control" placeholder="Department" value="" title="Please enter your department" class="form-control" required>
+									<option value="" disabled class="text-center" selected><?php echo $Department; ?></option>
+                                    <option value="EEE">EEE</option>
+                                    <option value="ECE">ECE</option>
+                                    <option value="CSE">CSE</option>
+                                    <option value="MECH">Mech</option>
+                                    <option value="IT">IT</option>
+                                    <option value="AI_DS">AI & DS</option>
+                                    <option value="CYBER_SECURITY">Cyber Security</option>
+                                    <option value="IOT">IOT</option>
+                                    <option value="MCA">MCA</option>
+                                    <option value="MBA">MBA</option> 
+                                    <option value="ME_CSE">M.E CSE</option>    
+                                    <option value="ME_CS">M.E Communication Systems</option>
+                                    <option value="ME_PSE">M.E PSE</option>   
+                                </select></td>
+				<!-- <td><input type="text"class="form-control" name="Department" value="<?php echo $Department; ?>"></td> -->
 			</tr>
 			<tr> 
 				<td>Password</td>

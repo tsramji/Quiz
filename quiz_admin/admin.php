@@ -1,9 +1,94 @@
 <?php
-@include '../session.php';
+@include '../config.php';
+session_start();
+if(isset($_SESSION['user_name'])){
+    
+}
+else{
+header('location:../index.php');
+}
+?>
+<?php
 $query = "select * from staff_admin_details ORDER BY id";
 $result = mysqli_query($conn, $query);
 ?>
+<?php
+//insertion code
+if(isset($_POST['submit'])){
+    $id=($_POST['id']);
+    $name = mysqli_real_escape_string($conn, $_POST['name']);
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $dept=($_POST['dept']);
+    $contact=($_POST['contact']);
+    $pass=md5($_POST['pass']);
+    $usertype=($_POST['usertype']);
+    $select = "SELECT * FROM staff_admin_details WHERE email = '$email' || id = '$id' ";
+    $result = mysqli_query($conn, $select);
+    if(mysqli_num_rows($result)>0){
+        $error1[]='user already exist!';
 
+    }
+    else{
+        $insert = "INSERT INTO staff_admin_details values('$id','$name','$email','$dept','$contact','$pass','$usertype')";
+        mysqli_query($conn, $insert);
+            header('location:admin.php');
+    }
+
+};
+
+// spliting operation
+if ($conn->connect_error) {
+    die("Database connection failed: " . $conn->connect_error);
+}
+
+// Fetch distinct departments
+$query = "SELECT DISTINCT dept FROM staff_admin_details";
+$result = $conn->query($query);
+
+if (!$result) {
+    die("Query failed: " . $conn->error);
+}
+
+$departments = [];
+while ($row = $result->fetch_assoc()) {
+    $departments[] = $row['dept'];
+}
+
+// Iterate over each department and create a table
+foreach ($departments as $department) {
+    // Sanitize department name to be used in table names
+    $table_name = preg_replace('/[^a-zA-Z0-9_]/', '_', strtolower($department));
+
+    // Create a new table for the department
+    $create_table_query = "CREATE TABLE IF NOT EXISTS $table_name (
+        id INT PRIMARY KEY,
+        name VARCHAR(100),
+        email VARCHAR(50),
+        dept VARCHAR(100),
+        contact VARCHAR(10),
+        password VARCHAR(50),
+        user_type VARCHAR(10)
+    )";
+    if (!$conn->query($create_table_query)) {
+        die("Table creation failed: " . $conn->error);
+    }
+
+    // Insert data into the department-specific table
+    $insert_data_query = "INSERT IGNORE INTO $table_name (id, name, email, dept, contact, password, user_type)
+SELECT id, name, email, dept, contact, password, user_type FROM staff_admin_details
+WHERE dept = ?";
+
+    $stmt = $conn->prepare($insert_data_query);
+    if (!$stmt) {
+        die("Prepare failed: " . $conn->error);
+    }
+
+    $stmt->bind_param('s', $department);
+    if (!$stmt->execute()) {
+        die("Execute failed: " . $stmt->error);
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -53,32 +138,57 @@ $result = mysqli_query($conn, $query);
 
             <div class="contents ">
                 <h6 class="staff-details">Teacher Details</h6>
-                <form class="add-staff-form row ml-1 mr-3" action="CRUD/insert.php" method="post" name="add">
+                <form class="add-staff-form row ml-1 mr-3" action="" method="post" name="add">
+                <?php
+                    if(isset($error1)){
+                        foreach($error1 as $error1){
+                            echo '<span class = "error-msg"><center>'.$error1.'</center></span>';
+                            echo "<script type='text/javascript'>alert('$error1');</script>";?>
+                            <?php
+                        };
+                    };
+                ?>
                     <div class="form-group col-lg-3 col-md-3 col-12">
                         <h6>Staff Name</h6>
-                        <input type="text" name="Staff_Name" required class="bordered form-control">
+                        <input type="text" name="name" required class="bordered form-control">
                         <h6>Staff ID</h6>
-                        <input type="text" name="Staff_ID" required class="bordered form-control">
+                        <input type="text" name="id" required class="bordered form-control">
                     </div>
                     <div class="form-group col-lg-3 col-md-3 col-12">
                         <h6>Phone No</h6>
-                        <input type="tel" name="Phone_No" required class="bordered form-control" pattern="[0-9]{10}" maxlength="10">
+                        <input type="tel" name="contact" required class="bordered form-control" pattern="[0-9]{10}" maxlength="10">
                         <h6>Email</h6>
-                        <input type="email" name="Email" required class="bordered form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+                        <input type="email" name="email" required class="bordered form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
                     </div>
                     <div class="form-group col-lg-3 col-md-3 col-12">
                         <h6>Department</h6>
-                        <select name="Department" id="" required class="bordered  form-control">
+                        <select id="dept" name="dept" placeholder="Department" title="Please enter your department" class="form-control" required>
+                                    <option value="" disabled selected>Select a department</option>
+                                    <option value="EEE">EEE</option>
+                                    <option value="ECE">ECE</option>
+                                    <option value="CSE">CSE</option>
+                                    <option value="MECH">Mech</option>
+                                    <option value="IT">IT</option>
+                                    <option value="AI_DS">AI & DS</option>
+                                    <option value="CYBER_SECURITY">Cyber Security</option>
+                                    <option value="IOT">IOT</option>
+                                    <option value="MCA">MCA</option>
+                                    <option value="MBA">MBA</option> 
+                                    <option value="ME_CSE">M.E CSE</option>    
+                                    <option value="ME_CS">M.E Communication Systems</option>
+                                    <option value="ME_PSE">M.E PSE</option>   
+                                </select>
+                        <!-- <select name="Department" id="" required class="bordered  form-control">
                             <option value="BCA" name="Department">BCA</option>
                             <option value="MCA" name="Department">MCA</option>
                             <option value="MBA" name="Department">MBA</option>
                             <option value="B.E" name="Department">B.E</option>
-                        </select>
+                        </select> -->
 
                     </div>
                     <div class="form-group col-lg-3 col-md-3 col-12">
                         <h6>Password</h6>
-                        <input type="password" name="Password" required class="bordered  form-control" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+                        <input type="password" name="pass" required class="bordered  form-control" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
                         <input type="hidden" name = "usertype" placeholder="usertype" value='staff'>
                         <input type="submit" name="submit" class="add-button" value="Add Teacher">
                     </div>
@@ -103,6 +213,8 @@ $result = mysqli_query($conn, $query);
                         <tr>
                         <?php
                             @include '../session.php';
+                            $query = "select * from staff_admin_details ORDER BY id";
+                            $result = mysqli_query($conn, $query);
                              while ($row = mysqli_fetch_assoc($result)) {
                             ?>
 

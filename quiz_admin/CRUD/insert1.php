@@ -11,7 +11,7 @@
 @include '../../session.php';
 if(isset($_POST["submit"]))
 {
-     if(empty($_POST['Staff_Name']) || empty($_POST['Staff_ID']) || empty($_POST['Phone_No']) || empty($_POST['Email']) || empty($_POST['Department']) || empty($_POST['Email']))
+     if(empty($_POST['Staff_Name']) || empty($_POST['Staff_ID']) || empty($_POST['Phone_No']) || empty($_POST['Email']) || empty($_POST['dept']) || empty($_POST['Email']))
         {
             echo "Please Fill the all details";
         }
@@ -22,12 +22,18 @@ if(isset($_POST["submit"]))
             $Phone_No=mysqli_real_escape_string($conn,$_POST['Phone_No']);
             $Password=mysqli_real_escape_string($conn,$_POST['Password']);
             $Email=mysqli_real_escape_string($conn,$_POST['Email']);
-            $Department=mysqli_real_escape_string($conn,$_POST['Department']);
+            $dept=mysqli_real_escape_string($conn,$_POST['dept']);
             $user_type=mysqli_real_escape_string($conn,$_POST['usertype']);
+            $select = "SELECT * FROM staff_admin_details WHERE email = '$Email' || id = '$Staff_ID' ";
+            $result = mysqli_query($conn, $select);
+            if(mysqli_num_rows($result)>0){
+                $error1[]='user already exist!';
+            }
+            else{
             $query ="INSERT INTO staff_admin_details(`id`,`name`,`email`,`dept`,`contact`,`password`,`user_type`)
-            VALUES('$Staff_ID','$Staff_Name','$Email','$Department','$Phone_No','$Password','$user_type')";
+            VALUES('$Staff_ID','$Staff_Name','$Email','$dept','$Phone_No','$Password','$user_type')";
             $result = mysqli_query($conn,$query);
-          
+            }
          if($result){
             header('location:../Admin.php');
            
